@@ -10,7 +10,7 @@ const api = require('./api')
  * @param {Array} list 行情数组
  * @returns {Array}
  */
-function withRedT (list) {
+function withRedT(list) {
   list = filter.removeKechuang(list)
   list = filter.removeST(list)
   list = filter.byChangePercent(list, 0, 9)
@@ -30,7 +30,7 @@ function withRedT (list) {
  * @param {Array} list 行情数组
  * @returns {Promise<Array>}
  */
-async function withMacd (list) {
+async function withMacd(list) {
   const list_tmp = []
   let i = 0
   while (i < list.length - 1) {
@@ -58,7 +58,7 @@ async function withMacd (list) {
  * @param {Array} list 行情数组
  * @returns {Promise<Array>}
  */
-async function withDadan (list = []) {
+async function withDadan(list = []) {
   const list_tmp = []
   let i = 0
   while (i < list.length - 1) {
@@ -67,7 +67,9 @@ async function withDadan (list = []) {
     const superFlow = res?.superFlow || 0
     const bigFlow = res?.bigFlow || 0
     if (superFlow > 0) {
-      if (bigFlow > 0 || superFlow > Math.abs(bigFlow)) { list_tmp.push(item) }
+      if (bigFlow > 0 || superFlow > Math.abs(bigFlow)) {
+        list_tmp.push(item)
+      }
     } else if (bigFlow > Math.abs(superFlow)) {
       list_tmp.push(item)
     }

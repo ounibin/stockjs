@@ -36,7 +36,7 @@ const dayjs = require('dayjs')
     "turnoverratio": 75.2152
   }
  */
-async function getHistory (code, startDate, endDate) {
+async function getHistory(code, startDate, endDate) {
   try {
     if (typeof code !== 'string') {
       throw (Error(`code应该为string，但接收到的是${typeof code}`))
@@ -88,7 +88,7 @@ async function getHistory (code, startDate, endDate) {
  * @param {String} date 日期，如'2021-08-08'
  * @returns {Promise<Boolean>} true or false
  */
-async function isOpen (date = '') {
+async function isOpen(date = '') {
   const res = await axios.get(`http://tool.bitefu.net/jiari/?d=${date}`)
   return Number(res.data) === 0
 }
@@ -98,16 +98,16 @@ async function isOpen (date = '') {
  * @returns {Promise<Array>} 数组，某一个item，如下：
 
  */
-function getAll () {
+function getAll() {
   return new Promise((resolve, reject) => {
     const urlList = []
-    for (let index = 1; index <= 48; index++) {
+    for (let index = 1; index <= 52; index++) {
       const url = `http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?num=100&sort=changepercent&asc=0&node=hs_a&symbol=&_s_r_a=page&page=${index}`
       urlList.push(url)
     }
     asyncUtil.mapLimit(urlList, 2, async (url) => {
       const res = await axios.get(url)
-      // console.log(`获取到${res.data.length}条行情数据`)
+      console.log(`获取到${res.data.length}条行情数据`)
       return res.data
     }, (err, results) => {
       if (err) reject(err)
@@ -118,7 +118,28 @@ function getAll () {
         })
         const date = dayjs().format('YYYY-MM-DD')
         const realRes = res.map((item) => {
-          const { symbol, code, name, trade, pricechange, changepercent, buy, sell, settlement, open, high, low, volume, amount, ticktime, per, pb, mktcap, nmc, turnoverratio } = item
+          const {
+            symbol,
+            code,
+            name,
+            trade,
+            pricechange,
+            changepercent,
+            buy,
+            sell,
+            settlement,
+            open,
+            high,
+            low,
+            volume,
+            amount,
+            ticktime,
+            per,
+            pb,
+            mktcap,
+            nmc,
+            turnoverratio
+          } = item
           return {
             date: date,
             symbol,
@@ -154,7 +175,7 @@ function getAll () {
  * 获取今日全部股票行情
  * @returns {Promise<Array>} 数组，某一个item
  */
-async function getTodayAll () {
+async function getTodayAll() {
   const today = dayjs().format('YYYY-MM-DD')
   const res = await axios.get(`http://tool.bitefu.net/jiari/?d=${today}`)
   const isOpen = Number(res.data) === 0
@@ -176,11 +197,16 @@ async function getTodayAll () {
       smallFlow
     }
  */
-async function getDaDan (code) {
+async function getDaDan(code) {
   try {
     const symbol = ['5', '6', '9'].indexOf(code.charAt(0)) >= 0 ? `sh${code}` : `sz${code}`
     const res = await axios.get(`https://proxy.finance.qq.com/cgi/cgi-bin/fundflow/hsfundtab?code=${symbol}&type=historyFundFlow,fiveDayFundFlow,todayFundTrend,todayFundFlow&stockType=GP-A-CYB&_rndtime=1629881078&_appName=ios&_dev=iPhone11,8&_devId=da95e4d81219c7c6a032ddfb97e697ef9bfd015d&_appver=9.3.1&_ifChId=&_isChId=1&_osVer=14.5.1&openid=oA0GbjuuHb8INjX0Ot6iutogSAYk&fskey=v0aaf8a8221612602a604296d87a906e&appid=wxcbc3ab3807acb685&access_token=48_MciNFtSWUX95rFFSwM9JWEfXkfTA2GIGXmUuh6whDig790tYTZ4dXS-naj6fkzD0DcZ3uPHFnEmmGNN7Y-cdyZrw_Ha407FjfOip_ZMnNPY&buildType=store&check=11&_idfa=&lang=zh_CN`)
-    let { superFlow, bigFlow, normalFlow, smallFlow } = res.data.data.todayFundFlow
+    let {
+      superFlow,
+      bigFlow,
+      normalFlow,
+      smallFlow
+    } = res.data.data.todayFundFlow
     superFlow = +superFlow
     bigFlow = +bigFlow
     const middleFlow = +normalFlow
@@ -206,7 +232,7 @@ async function getDaDan (code) {
       down: 2
     }
  */
-async function getUpDown (code) {
+async function getUpDown(code) {
   try {
     const res = await axios.get(`https://bi.10jqka.com.cn/${code}_17/online_user_latest.json`)
     const up = +res.data.czd.result[`stock_${code}`].options[0].hot

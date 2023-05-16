@@ -56,11 +56,11 @@ api module
     "turnoverratio": 75.2152
   }  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| code | <code>String</code> | 股票代码，如'600001' |
+| Param     | Type                | Description              |
+| --------- | ------------------- | ------------------------ |
+| code      | <code>String</code> | 股票代码，如'600001'     |
 | startDate | <code>String</code> | 开始日期，如'2021-08-17' |
-| endDate | <code>String</code> | 结束日期，如'2021-08-17' |
+| endDate   | <code>String</code> | 结束日期，如'2021-08-17' |
 
 <a name="module_api..isOpen"></a>
 
@@ -70,9 +70,9 @@ api module
 **Kind**: inner method of [<code>api</code>](#module_api)  
 **Returns**: <code>Promise.&lt;Boolean&gt;</code> - true or false  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| date | <code>String</code> | 日期，如'2021-08-08' |
+| Param | Type                | Description          |
+| ----- | ------------------- | -------------------- |
+| date  | <code>String</code> | 日期，如'2021-08-08' |
 
 <a name="module_api..getAll"></a>
 
@@ -101,9 +101,9 @@ api module
       smallFlow
     }  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| code | <code>String</code> | 股票代码 |
+| Param | Type                | Description |
+| ----- | ------------------- | ----------- |
+| code  | <code>String</code> | 股票代码    |
 
 <a name="module_api..getUpDown"></a>
 
@@ -116,9 +116,9 @@ api module
       down: 2
     }  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| code | <code>String</code> | 代码 |
+| Param | Type                | Description |
+| ----- | ------------------- | ----------- |
+| code  | <code>String</code> | 代码        |
 
 <a name="module_filter"></a>
 
@@ -146,9 +146,9 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| list | <code>Array</code> | 行情数组 |
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
 <a name="module_filter..removeKechuang"></a>
 
@@ -158,9 +158,9 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| list | <code>Array</code> | 行情数组 |
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
 <a name="module_filter..byPrice"></a>
 
@@ -170,10 +170,10 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| list | <code>Array</code> |  | 行情数组 |
-| lowPrice | <code>Number</code> | <code>0</code> | 最低价，默认0 |
+| Param     | Type                | Default           | Description      |
+| --------- | ------------------- | ----------------- | ---------------- |
+| list      | <code>Array</code>  |                   | 行情数组         |
+| lowPrice  | <code>Number</code> | <code>0</code>    | 最低价，默认0    |
 | highPrice | <code>Number</code> | <code>3000</code> | 最高价，默认3000 |
 
 <a name="module_filter..byRatio"></a>
@@ -184,10 +184,10 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| list | <code>Array</code> |  | 行情数组 |
-| lowRatio | <code>Number</code> | <code>0</code> | 最低换手率，默认0 |
+| Param     | Type                | Default          | Description         |
+| --------- | ------------------- | ---------------- | ------------------- |
+| list      | <code>Array</code>  |                  | 行情数组            |
+| lowRatio  | <code>Number</code> | <code>0</code>   | 最低换手率，默认0   |
 | highRatio | <code>Number</code> | <code>100</code> | 最高换手率，默认100 |
 
 <a name="module_filter..byChangePercent"></a>
@@ -198,11 +198,11 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| list | <code>Array</code> |  | 行情数组 |
-| lowPercent | <code>Number</code> |  | 最低涨跌幅度，默认-20 |
-| highPercent | <code>Number</code> | <code>20</code> | 最高涨跌幅度，默认20 |
+| Param       | Type                | Default         | Description           |
+| ----------- | ------------------- | --------------- | --------------------- |
+| list        | <code>Array</code>  |                 | 行情数组              |
+| lowPercent  | <code>Number</code> |                 | 最低涨跌幅度，默认-20 |
+| highPercent | <code>Number</code> | <code>20</code> | 最高涨跌幅度，默认20  |
 
 <a name="module_filter..byAmount"></a>
 
@@ -212,11 +212,11 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| list | <code>Aarray</code> |  | 行情数组 |
+| Param     | Type                | Default               | Description                        |
+| --------- | ------------------- | --------------------- | ---------------------------------- |
+| list      | <code>Aarray</code> |                       | 行情数组                           |
 | lowAmount | <code>Number</code> | <code>10000000</code> | 最低成交额，默认10000000（一千万） |
-| lowAmount | <code>Number</code> |  | 最高成交额 |
+| lowAmount | <code>Number</code> |                       | 最高成交额                         |
 
 <a name="module_filter..getRedT"></a>
 
@@ -226,9 +226,9 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| list | <code>Array</code> | 行情数组 |
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
 <a name="module_filter..getRealRedT"></a>
 
@@ -238,9 +238,9 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| list | <code>Array</code> | 行情数组 |
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
 <a name="module_filter..getChuangye"></a>
 
@@ -250,9 +250,9 @@ filter module
 **Kind**: inner method of [<code>filter</code>](#module_filter)  
 **Returns**: <code>Array</code> - 数组  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| list | <code>Array</code> | 行情数组 |
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
 <a name="module_filter..macd"></a>
 
@@ -266,8 +266,8 @@ filter module
   deas
 }  
 
-| Param | Type | Description |
-| --- | --- | --- |
+| Param | Type               | Description                          |
+| ----- | ------------------ | ------------------------------------ |
 | ticks | <code>array</code> | 价格数组，最近一日的价格在数组第一个 |
 
 <a name="module_getter"></a>
@@ -287,11 +287,10 @@ getter module
 分析，红T
 
 **Kind**: inner method of [<code>getter</code>](#module_getter)  
-**Returns**: <code>Array</code> - 数组  
 
-| Param | Type |
-| --- | --- |
-| list | <code>Array</code> | 
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
 <a name="module_getter..withMacd"></a>
 
@@ -299,11 +298,10 @@ getter module
 分析，macd
 
 **Kind**: inner method of [<code>getter</code>](#module_getter)  
-**Returns**: <code>Promise.&lt;Array&gt;</code> - 数组  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| list | <code>Array</code> | 行情数组 |
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
 <a name="module_getter..withDadan"></a>
 
@@ -312,7 +310,7 @@ getter module
 
 **Kind**: inner method of [<code>getter</code>](#module_getter)  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| list | <code>Array</code> | 行情数组 |
+| Param | Type               | Description |
+| ----- | ------------------ | ----------- |
+| list  | <code>Array</code> | 行情数组    |
 
