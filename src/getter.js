@@ -41,7 +41,7 @@ async function withMacd(list) {
       return hItem.trade
     })
     const s = filter.macd(ticks)
-    const dea = s.deas[1]
+    // const dea = s.deas[1]
     const dif = s.diffs[1]
     const dfi2 = s.diffs[2]
     if (dfi2 < dif) {

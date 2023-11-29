@@ -7,7 +7,7 @@
  * @param {Array} list 行情数组
  * @returns {Array} 数组
  */
-function removeST (list) {
+function removeST(list) {
   return list.filter((item) => {
     return !(/ST/g.test(item.name))
   })
@@ -18,7 +18,7 @@ function removeST (list) {
  * @param {Array} list 行情数组
  * @returns {Array} 数组
  */
-function removeKechuang (list) {
+function removeKechuang(list) {
   return list.filter((item) => {
     return item.code.substring(0, 3) !== '688'
   })
@@ -31,7 +31,7 @@ function removeKechuang (list) {
  * @param {Number} highPrice 最高价，默认3000
  * @returns {Array} 数组
  */
-function byPrice (list, lowPrice = 0, highPrice = 3000) {
+function byPrice(list, lowPrice = 0, highPrice = 3000) {
   return list.filter((item) => {
     const trade = Number(item.trade)
     return trade >= lowPrice && trade <= highPrice
@@ -45,7 +45,7 @@ function byPrice (list, lowPrice = 0, highPrice = 3000) {
  * @param {Number} highRatio 最高换手率，默认100
  * @returns {Array} 数组
  */
-function byRatio (list, lowRatio = 0, highRatio = 100) {
+function byRatio(list, lowRatio = 0, highRatio = 100) {
   return list.filter((item) => {
     const ratio = Number(item.turnoverratio)
     return ratio >= lowRatio && ratio <= highRatio
@@ -59,7 +59,7 @@ function byRatio (list, lowRatio = 0, highRatio = 100) {
  * @param {Number} highPercent 最高涨跌幅度，默认20
  * @returns {Array} 数组
  */
-function byChangePercent (list, lowPercent = -20, highPercent = 20) {
+function byChangePercent(list, lowPercent = -20, highPercent = 20) {
   return list.filter((item) => {
     const percent = Number(item.changepercent)
     return percent >= lowPercent && percent <= highPercent
@@ -73,7 +73,7 @@ function byChangePercent (list, lowPercent = -20, highPercent = 20) {
  * @param {Number} lowAmount 最高成交额
  * @returns {Array} 数组
  */
-function byAmount (list, lowAmount = 10000000, highAmount) {
+function byAmount(list, lowAmount = 10000000, highAmount) {
   return list.filter((item) => {
     const amount = Number(item.amount)
     if (highAmount) {
@@ -88,7 +88,7 @@ function byAmount (list, lowAmount = 10000000, highAmount) {
  * @param {Array} list 行情数组
  * @returns {Array} 数组
  */
-function getRedT (list) {
+function getRedT(list) {
   return list.filter((item) => {
     let { open, high, low, trade } = item
     open = Number(open)
@@ -107,7 +107,7 @@ function getRedT (list) {
  * @param {Array} list 行情数组
  * @returns {Array} 数组
  */
-function getRealRedT (list) {
+function getRealRedT(list) {
   return list.filter((item) => {
     let { open, high, low, trade } = item
     open = Number(open)
@@ -125,16 +125,16 @@ function getRealRedT (list) {
  * @param {Array} list 行情数组
  * @returns {Array} 数组
  */
-function getChuangye (list) {
+function getChuangye(list) {
   return list.filter((item) => {
     return /^3/g.test(item.code)
   })
 }
 
-function _ema (lastEma, closePrice, units) {
+function _ema(lastEma, closePrice, units) {
   return (lastEma * (units - 1) + closePrice * 2) / (units + 1)
 }
-function _dea (lastDea, curDiff) {
+function _dea(lastDea, curDiff) {
   return (lastDea * 8 + curDiff * 2) / 10
 }
 /**
@@ -146,7 +146,7 @@ function _dea (lastDea, curDiff) {
   deas
 }
  */
-function macd (ticks) {
+function macd(ticks) {
   const ema12 = []
   const ema26 = []
   const diffs = []

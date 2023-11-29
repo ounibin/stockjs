@@ -141,7 +141,7 @@ function getAll() {
             turnoverratio
           } = item
           return {
-            date: date,
+            date,
             symbol,
             code,
             name,
@@ -238,7 +238,7 @@ async function getUpDown(code) {
     const up = +res.data.czd.result[`stock_${code}`].options[0].hot
     const down = +res.data.czd.result[`stock_${code}`].options[1].hot
     const total = up + down
-    const upStr = ((up / total) * 100).toFixed(2) + '%'
+    // const upStr = ((up / total) * 100).toFixed(2) + '%'
     return {
       up,
       down
