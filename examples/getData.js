@@ -4,7 +4,7 @@ const path = require('path')
 const { getter, api } = require('../src/index')
 
 function getData() {
-  const TODAY = dayjs().format('YYYY-MM-DD')
+  const TODAY = dayjs().format('YYYYMMDD')
   api.getTodayAll().then((res) => {
     jsonfile
       .writeFile(path.join(__dirname, `data/${TODAY}.json`), res)
@@ -13,10 +13,4 @@ function getData() {
   })
 }
 
-
-
-function main() {
-  getData()
-  // analysisData()
-}
-main()
+getData()
