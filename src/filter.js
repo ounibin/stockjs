@@ -90,7 +90,12 @@ function byAmount(list, lowAmount = 10000000, highAmount) {
  */
 function getRedT(list) {
   return list.filter((item) => {
-    let { open, high, low, trade } = item
+    let {
+      open,
+      high,
+      low,
+      trade
+    } = item
     open = Number(open)
     high = Number(high)
     low = Number(low)
@@ -102,6 +107,45 @@ function getRedT(list) {
   })
 }
 
+function getRedCrossStar(list) {
+  return list.filter((item) => {
+    let {
+      open,
+      high,
+      low,
+      trade
+    } = item
+    open = Number(open)
+    high = Number(high)
+    low = Number(low)
+    trade = Number(trade)
+    const divH = Math.abs(trade - open)
+    const lineUpH = Math.abs(high - trade)
+    const lineDownH = Math.abs(open - low)
+    return trade > open && (lineUpH / divH) > 2.5 && (lineDownH / divH) > 2.5
+  })
+}
+
+
+function getGreenCrossStar(list) {
+  return list.filter((item) => {
+    let {
+      open,
+      high,
+      low,
+      trade
+    } = item
+    open = Number(open)
+    high = Number(high)
+    low = Number(low)
+    trade = Number(trade)
+    const divH = Math.abs(trade - open)
+    const lineUpH = Math.abs(high - trade)
+    const lineDownH = Math.abs(open - low)
+    return trade < open && (lineUpH / divH) > 2.5 && (lineDownH / divH) > 2.5
+  })
+}
+
 /**
  * 获取平头redT，
  * @param {Array} list 行情数组
@@ -109,7 +153,12 @@ function getRedT(list) {
  */
 function getRealRedT(list) {
   return list.filter((item) => {
-    let { open, high, low, trade } = item
+    let {
+      open,
+      high,
+      low,
+      trade
+    } = item
     open = Number(open)
     high = Number(high)
     low = Number(low)
@@ -134,6 +183,7 @@ function getChuangye(list) {
 function _ema(lastEma, closePrice, units) {
   return (lastEma * (units - 1) + closePrice * 2) / (units + 1)
 }
+
 function _dea(lastDea, curDiff) {
   return (lastDea * 8 + curDiff * 2) / 10
 }
@@ -183,6 +233,8 @@ module.exports = {
   byChangePercent,
   byAmount,
   getRedT,
+  getRedCrossStar,
+  getGreenCrossStar,
   getRealRedT,
   getChuangye,
   macd

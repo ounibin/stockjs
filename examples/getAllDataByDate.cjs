@@ -53,7 +53,7 @@ async function getMarketData(date) {
 }
 
 // 示例：获取某一天的行情数据
-const date = '20241126'
+const date = '20250318'
 getMarketData(date).then(data => {
   if (data) {
     console.log('行情数据:', data)

@@ -1,10 +1,14 @@
 const dayjs = require('dayjs')
 const jsonfile = require('jsonfile')
 const path = require('path')
-const { getter, api } = require('../src/index')
+const {
+  getter,
+  api
+} = require('../src/index')
 
 function getData() {
-  const TODAY = dayjs().format('YYYYMMDD')
+  // const TODAY = dayjs().format('YYYYMMDD')
+  const TODAY = '20250318'
   api.getTodayAll().then((res) => {
     jsonfile
       .writeFile(path.join(__dirname, `data/${TODAY}.json`), res)
