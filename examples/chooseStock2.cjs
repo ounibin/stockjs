@@ -71,8 +71,10 @@ async function main(buyDate) {
     console.log('异步打印----绿十字星: ', list_lvshizi.length)
 
     list = list_hongshizi.concat(list_lvshizi)
+    list = list.filter(item => {
+      return item.trade > 10
+    })
     const resList = []
-    // 成交量大于上一开盘2.5倍
     const LASTDAY = (dayjs(buyDate).subtract(1, 'day')).format('YYYYMMDD')
     console.log('异步打印----上一个开盘日: ', LASTDAY)
     const list_last_day = require(`./data/${LASTDAY}.json`)
@@ -80,10 +82,14 @@ async function main(buyDate) {
       const item_last = list_last_day.find((n) => n.code === item.code)
       if (item_last) {
         // console.log('异步打印----item_last: ', item.volume, item_last.volume * 2)
-        if ((item.trade - item.open) > 0 && item.volume > item_last.volume * 1.5 && item_last.trade - item_last.open < 0) {
+        if ((item.close - item.open) > 0 && item.volume > item_last.volume * 1.5 && item_last.close - item_last.open < 0) {
           resList.push(item)
         }
       }
+    })
+
+    list = list.filter((item) => {
+      return item.trade > 10
     })
 
     // 打印
@@ -101,9 +107,4 @@ async function main(buyDate) {
   }
 }
 
-const dateList = ['20241122', '20241121', '20241120', '20241119', '20241115', '20241114', '20241113', '20241112']
-for (let index = 0; index < dateList.length; index++) {
-  // main(dateList[index])
-}
-
-main('20250318')
+main('20250321')

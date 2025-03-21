@@ -8,7 +8,7 @@ const {
 
 function getData() {
   // const TODAY = dayjs().format('YYYYMMDD')
-  const TODAY = '20250318'
+  const TODAY = '20250319'
   api.getTodayAll().then((res) => {
     jsonfile
       .writeFile(path.join(__dirname, `data/${TODAY}.json`), res)
