@@ -70,12 +70,13 @@ async function main(buyDate) {
     const list_lvshizi = stockjs.filter.getGreenCrossStar(list)
     console.log('异步打印----绿十字星: ', list_lvshizi.length)
 
-    list = list_hongshizi.concat(list_lvshizi)
+    list = list_hongshizi
     list = list.filter(item => {
       return item.trade > 10
     })
     const resList = []
-    const LASTDAY = (dayjs(buyDate).subtract(1, 'day')).format('YYYYMMDD')
+    // const LASTDAY = (dayjs(buyDate).subtract(1, 'day')).format('YYYYMMDD')
+    const LASTDAY = '20250403'
     console.log('异步打印----上一个开盘日: ', LASTDAY)
     const list_last_day = require(`./data/${LASTDAY}.json`)
     list.forEach((item) => {
@@ -107,4 +108,4 @@ async function main(buyDate) {
   }
 }
 
-main('20250324')
+main('20250408')
