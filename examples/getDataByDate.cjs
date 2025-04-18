@@ -29,7 +29,7 @@ const TUSHARE_API_TOKEN = '636de5eeb64f0c7f44165b5e9f4458fbdb18faab6f7bd8aa56553
 const TUSHARE_API_URL = 'http://api.waditu.com'
 
 // 获取指定日期的行情数据
-async function getMarketData(date) {
+async function getRealTimeData(date) {
   try {
     const response = await axios.post(TUSHARE_API_URL, {
       api_name: 'daily',
@@ -54,8 +54,8 @@ async function getMarketData(date) {
 }
 
 // 示例：获取某一天的行情数据
-const date = '20250408'
-getMarketData(date).then(data => {
+const date = '20250414'
+getRealTimeData(date).then(data => {
   if (data) {
     console.log('行情数据:', data)
     data = data.map(formatData)

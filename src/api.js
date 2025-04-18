@@ -103,7 +103,7 @@ async function isOpen(date = '') {
 function getAll() {
   return new Promise((resolve, reject) => {
     const urlList = []
-    for (let index = 1; index <= 52; index++) {
+    for (let index = 1; index <= 54; index++) {
       const url = `http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?num=100&sort=changepercent&asc=0&node=hs_a&symbol=&_s_r_a=page&page=${index}`
       urlList.push(url)
     }
@@ -118,7 +118,6 @@ function getAll() {
         results.forEach((itemlist) => {
           res = res.concat(itemlist)
         })
-        const date = dayjs().format('YYYY-MM-DD')
         const realRes = res.map((item) => {
           const {
             symbol,
@@ -143,7 +142,7 @@ function getAll() {
             turnoverratio
           } = item
           return {
-            date,
+            date: dayjs().format('YYYY-MM-DD'),
             symbol,
             code,
             name,

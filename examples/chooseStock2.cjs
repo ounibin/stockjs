@@ -66,17 +66,17 @@ async function main(buyDate) {
       return !isKechuang && !isXinSanBan
     })
     const list_hongshizi = stockjs.filter.getRedCrossStar(list)
-    console.log('异步打印----红十字星: ', list_hongshizi.length)
-    const list_lvshizi = stockjs.filter.getGreenCrossStar(list)
-    console.log('异步打印----绿十字星: ', list_lvshizi.length)
-
+    // console.log('异步打印----红十字星: ', list_hongshizi.length)
+    // const list_lvshizi = stockjs.filter.getGreenCrossStar(list)
+    // console.log('异步打印----绿十字星: ', list_lvshizi.length)
+    // .concat(list_lvshizi)
     list = list_hongshizi
     list = list.filter(item => {
       return item.trade > 10
     })
     const resList = []
-    // const LASTDAY = (dayjs(buyDate).subtract(1, 'day')).format('YYYYMMDD')
-    const LASTDAY = '20250403'
+    const LASTDAY = (dayjs(buyDate).subtract(1, 'day')).format('YYYYMMDD')
+    // const LASTDAY = '20250411'
     console.log('异步打印----上一个开盘日: ', LASTDAY)
     const list_last_day = require(`./data/${LASTDAY}.json`)
     list.forEach((item) => {
@@ -108,4 +108,4 @@ async function main(buyDate) {
   }
 }
 
-main('20250408')
+main('20250416')
