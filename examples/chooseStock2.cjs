@@ -76,7 +76,7 @@ async function main(buyDate) {
     })
     const resList = []
     const LASTDAY = (dayjs(buyDate).subtract(1, 'day')).format('YYYYMMDD')
-    // const LASTDAY = '20250411'
+    // const LASTDAY = '20250418'
     console.log('异步打印----上一个开盘日: ', LASTDAY)
     const list_last_day = require(`./data/${LASTDAY}.json`)
     list.forEach((item) => {
@@ -108,4 +108,4 @@ async function main(buyDate) {
   }
 }
 
-main('20250416')
+main('20250422')

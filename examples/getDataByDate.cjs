@@ -54,7 +54,7 @@ async function getRealTimeData(date) {
 }
 
 // 示例：获取某一天的行情数据
-const date = '20250414'
+const date = '20250422'
 getRealTimeData(date).then(data => {
   if (data) {
     console.log('行情数据:', data)
