@@ -56,6 +56,7 @@ function isRedTStock(stockItem) {
 async function main(buyDate) {
   try {
     let list = getLocalDataByDate(buyDate)
+    console.log('异步打印----今天开盘日: ', buyDate, '数据长度为', list.length)
     // 条件选股
     list = list.filter((item) => {
       const zhangfu = (item.close - item.open) / item.open
@@ -76,9 +77,9 @@ async function main(buyDate) {
     })
     const resList = []
     const LASTDAY = (dayjs(buyDate).subtract(1, 'day')).format('YYYYMMDD')
-    // const LASTDAY = '20250418'
-    console.log('异步打印----上一个开盘日: ', LASTDAY)
+    // const LASTDAY = '20250509'
     const list_last_day = require(`./data/${LASTDAY}.json`)
+    console.log('异步打印----上一个开盘日: ', LASTDAY, '数据长度为', list_last_day.length)
     list.forEach((item) => {
       const item_last = list_last_day.find((n) => n.code === item.code)
       if (item_last) {
@@ -96,7 +97,7 @@ async function main(buyDate) {
     // 打印
     console.log('结果：', resList.length, '条记录')
     resList.forEach((item) => {
-      console.log(item.code, item.name)
+      console.log(item.code)
     })
 
     jsonfile
@@ -108,4 +109,4 @@ async function main(buyDate) {
   }
 }
 
-main('20250422')
+main('20250513')
