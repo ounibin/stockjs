@@ -24,12 +24,13 @@ function formatData(item) {
   }
 }
 
-// 替换为你的 Tushare API Token
-const TUSHARE_API_TOKEN = '636de5eeb64f0c7f44165b5e9f4458fbdb18faab6f7bd8aa565535c1'
-const TUSHARE_API_URL = 'http://api.waditu.com'
+
 
 // 获取指定日期的行情数据
-async function getRealTimeData(date) {
+async function getDateData(date) {
+  // 替换为你的 Tushare API Token
+  const TUSHARE_API_TOKEN = '636de5eeb64f0c7f44165b5e9f4458fbdb18faab6f7bd8aa565535c1'
+  const TUSHARE_API_URL = 'http://api.waditu.com'
   try {
     const response = await axios.post(TUSHARE_API_URL, {
       api_name: 'daily',
@@ -54,8 +55,8 @@ async function getRealTimeData(date) {
 }
 
 // 示例：获取某一天的行情数据
-const date = '20250515'
-getRealTimeData(date).then(data => {
+const date = '20250604'
+getDateData(date).then(data => {
   if (data) {
     console.log('行情数据:', data)
     data = data.map(formatData)
