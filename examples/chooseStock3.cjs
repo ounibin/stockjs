@@ -111,7 +111,7 @@ async function main(day1, lastDay) {
   }
 }
 
-const day1 = '20250529'
+const day1 = '20250605'
 const lastDay = (dayjs(day1).subtract(1, 'day')).format('YYYYMMDD')
 // lastDay = '20250530'
 main(day1, lastDay)
