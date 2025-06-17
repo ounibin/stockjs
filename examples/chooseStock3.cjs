@@ -76,7 +76,7 @@ async function main(day1, lastDay) {
       const isKechuang = /^688|689|787|789/.test(item.code)
       const isXinSanBan = /^82|83|87|88|430|420|400/.test(item.code)
       const bigPrice = item.trade > 10
-      return !isKechuang && !isXinSanBan
+      return !isKechuang && !isXinSanBan && bigPrice
     })
     const list_hongshizi = stockjs.filter.getRedCrossStar(list)
     // console.log('异步打印----红十字星: ', list_hongshizi.length)
@@ -112,7 +112,7 @@ async function main(day1, lastDay) {
 }
 
 let lastDay = ''
-const day1 = '20250610'
-lastDay = (dayjs(day1).subtract(1, 'day')).format('YYYYMMDD')
-// lastDay = '20250606'
+const day1 = '20250616'
+// lastDay = (dayjs(day1).subtract(1, 'day')).format('YYYYMMDD')
+lastDay = '20250613'
 main(day1, lastDay)
