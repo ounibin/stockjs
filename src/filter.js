@@ -126,7 +126,6 @@ function getRedCrossStar(list) {
   })
 }
 
-
 function getGreenCrossStar(list) {
   return list.filter((item) => {
     let {

@@ -97,22 +97,22 @@ async function main(day1, lastDay) {
     })
 
     // 打印
-    console.log('结果：', resList.length, '条记录')
-    resList.forEach((item) => {
-      console.log(item.code)
+    console.log('放量结果总数：', resList.length)
+    resList.forEach((item, index) => {
+      console.log(`放量结果${index + 1}：`, item.code)
     })
 
-    jsonfile
-      .writeFile(path.join(__dirname, `buyData/${day1}.json`), resList)
-      .then(res => console.log('Write complete'))
-      .catch(err => console.error(err))
+    // jsonfile
+    //   .writeFile(path.join(__dirname, `buyData/${day1}.json`), resList)
+    //   .then(res => console.log('Write complete'))
+    //   .catch(err => console.error(err))
   } catch (err) {
     console.log('分析出错err=', err)
   }
 }
 
 let lastDay = ''
-const day1 = '20250616'
-// lastDay = (dayjs(day1).subtract(1, 'day')).format('YYYYMMDD')
-lastDay = '20250613'
+const day1 = '20250701'
+lastDay = (dayjs(day1).subtract(1, 'day')).format('YYYYMMDD')
+// lastDay = '20250627'
 main(day1, lastDay)
