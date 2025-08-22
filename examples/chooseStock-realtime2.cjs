@@ -22,7 +22,7 @@ function formatData(item) {
 }
 
 async function main() {
-  const day1 = '20250820'
+  const day1 = '20250822'
   let lastDay = (dayjs(day1).subtract(1, 'day')).format('YYYYMMDD')
   // lastDay = ''
 

@@ -103,7 +103,7 @@ async function isOpen(date = '') {
 function getAll() {
   return new Promise((resolve, reject) => {
     const urlList = []
-    for (let index = 1; index <= 54; index++) {
+    for (let index = 1; index <= 56; index++) {
       const url = `http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/Market_Center.getHQNodeData?num=100&sort=changepercent&asc=0&node=hs_a&symbol=&_s_r_a=page&page=${index}`
       urlList.push(url)
     }
